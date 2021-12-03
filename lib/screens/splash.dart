@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:audioplayer/screens/home.dart';
 import 'package:flutter/material.dart';
 
+import 'layout.dart';
+
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({Key key}) : super(key: key);
   static String id = "SplashScreen";
 
   @override
@@ -15,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void didChangeDependencies() {
     Timer(const Duration(seconds: 3),(){
-      Navigator.of(context).pushNamed(HomePage.id);
+      Navigator.of(context).pushNamed( Layout.id);
     });
     super.didChangeDependencies();
   }
