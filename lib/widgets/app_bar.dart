@@ -50,9 +50,17 @@ Widget drawerBuild(){
       child: Column(
         children: [
           SizedBox(height: 50,),
-          drawerCard(name: '123'),
+          drawerCard(name: 'Tracks'),
           SizedBox(height: 30,),
-          drawerCard(name: '123'),
+          drawerCard(name: 'Albums'),
+          SizedBox(height: 30,),
+          drawerCard(name: 'PlayLists'),
+          SizedBox(height: 30,),
+          drawerCard(name: 'Artis'),
+          SizedBox(height: 30,),
+          drawerCard(name: 'Contact Us'),
+          SizedBox(height: 30,),
+          drawerCard(name: 'Settings'),
         ],
       ),
       decoration: BoxDecoration(
@@ -80,7 +88,15 @@ Widget drawerCard({String name}){
             fontWeight: FontWeight.bold
         ),)),
         decoration: BoxDecoration(
-          color: Colors.white38,
+          // color: Colors.white38,
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFFCC0066),
+              Colors.white38,
+              Color(0xFF383B49),
+            ],
+
+          ),
           borderRadius: BorderRadius.circular(15),
         ),
       ),
