@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import '/bloc/states.dart';
 import '/screens/all_audios.dart';
 import '/screens/favorites.dart';
@@ -5,7 +7,7 @@ import '/screens/home.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:audioplayers/audioplayers.dart';
 class AppCubit extends Cubit<AppStates>{
   AppCubit() : super(AppInitialState());
 
@@ -21,5 +23,12 @@ class AppCubit extends Cubit<AppStates>{
     currentIndex = index;
     emit(ChangeScreensState());
   }
-
+  AudioPlayer audioPlayer = AudioPlayer();
+  playLocal() async {
+    int result = await audioPlayer.play('localPath', isLocal: true);
+    return result;
+  }
+  // getAllFiles()async{
+  // File file = await
+  // }
 }

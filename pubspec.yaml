@@ -40,6 +40,8 @@ dependencies:
   eva_icons_flutter: ^3.0.2
   flutter_bloc: ^8.0.0
   bloc: ^8.0.1
+  audioplayers: ^0.20.1
+  url_launcher: ^6.0.17
 
 dev_dependencies:
   flutter_test:
@@ -85,11 +87,11 @@ flutter:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
-    - family: Icn
-      fonts:
-        - asset: fonts/icons.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+#    - family: Icn
+#      fonts:
+#        - asset: fonts/icons.ttf
+#  #       - asset: fonts/TrajanPro_Bold.ttf
+#  #         weight: 700
+#  #
+#  # For details regarding fonts from package dependencies,
+#  # see https://flutter.dev/custom-fonts/#from-packages

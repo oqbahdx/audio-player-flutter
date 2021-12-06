@@ -1,3 +1,5 @@
+import 'package:audioplayer/components/navigator.dart';
+import 'package:audioplayer/screens/contact_us.dart';
 import 'package:flutter/material.dart';
 
 import '../styles.dart';
@@ -44,7 +46,7 @@ Widget buildContainer({double width = 25}) {
   );
 }
 
-Widget drawerBuild(){
+Widget drawerBuild(BuildContext context){
   return  Drawer(
     child: Container(
       child: Column(
@@ -58,9 +60,11 @@ Widget drawerBuild(){
           SizedBox(height: 30,),
           drawerCard(name: 'Artis'),
           SizedBox(height: 30,),
-          drawerCard(name: 'Contact Us'),
-          SizedBox(height: 30,),
           drawerCard(name: 'Settings'),
+          SizedBox(height: 30,),
+          drawerCard(name: 'Contact Us',onTap: (){
+            moveToPage(context,namePage: ContactUs.id);
+          }),
         ],
       ),
       decoration: BoxDecoration(
@@ -71,33 +75,36 @@ Widget drawerBuild(){
   );
 }
 
-Widget drawerCard({String name}){
-  return  Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 10),
-    child: Card(
-      elevation: 30,
-      color: Colors.white38,
-      shape: RoundedRectangleBorder(
-        borderRadius:  BorderRadius.circular(15),
-      ),
-      child: Container(
-        height: 60,
-        width: double.infinity,
-        child: Center(child: Text(name,style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold
-        ),)),
-        decoration: BoxDecoration(
-          // color: Colors.white38,
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFFCC0066),
-              Colors.white38,
-              Color(0xFF383B49),
-            ],
+Widget drawerCard({String name , Function onTap}){
+  return  GestureDetector(
+    onTap: onTap,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Card(
+        elevation: 30,
+        color: Colors.white38,
+        shape: RoundedRectangleBorder(
+          borderRadius:  BorderRadius.circular(15),
+        ),
+        child: Container(
+          height: 60,
+          width: double.infinity,
+          child: Center(child: Text(name,style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold
+          ),)),
+          decoration: BoxDecoration(
+            // color: Colors.white38,
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFFCC0066),
+                Colors.white38,
+                Color(0xFF383B49),
+              ],
 
+            ),
+            borderRadius: BorderRadius.circular(15),
           ),
-          borderRadius: BorderRadius.circular(15),
         ),
       ),
     ),

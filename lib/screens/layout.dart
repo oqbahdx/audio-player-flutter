@@ -27,7 +27,7 @@ class _LayoutState extends State<Layout> {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-          drawer: drawerBuild(),
+          drawer: drawerBuild(context),
           key: key,
           appBar: AppBar(
             backgroundColor: Colors.transparent,

@@ -1,6 +1,8 @@
 import 'package:audioplayer/bloc/cubit.dart';
+import 'package:audioplayer/screens/contact_us.dart';
 import 'package:audioplayer/screens/home.dart';
 import 'package:audioplayer/screens/layout.dart';
+import 'package:audioplayer/screens/player_page.dart';
 import 'package:audioplayer/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +28,9 @@ class MyApp extends StatelessWidget {
         routes: {
           SplashScreen.id: (_) => const SplashScreen(),
           HomePage.id:(_)=>const HomePage(),
-          Layout.id:(_)=>const Layout()
+          Layout.id:(_)=>const Layout(),
+          PlayerPage.id:(_)=>PlayerPage(),
+          ContactUs.id:(_)=>ContactUs(),
         },
       ),
     );
