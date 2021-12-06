@@ -26,21 +26,19 @@ launchWhatsapp(BuildContext context) async {
     if (await canLaunch(whatappURL_ios)) {
       await launch(whatappURL_ios, forceSafariVC: false);
     } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: new Text("whatsapp is not installed")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: new Text("whatsapp is not installed")));
     }
   } else {
     // android , web
     if (await canLaunch(whatsappURl_android)) {
       await launch(whatsappURl_android);
     } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: new Text("whatsapp is not installed")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: new Text("whatsapp is not installed")));
     }
   }
 }
-
-
 
 Future<void> openEmail(String url) async {
   if (await canLaunch(url)) {
@@ -50,6 +48,6 @@ Future<void> openEmail(String url) async {
   }
 }
 
-void openUrl({String url}){
-  launch(url,forceWebView: false,enableJavaScript: true);
+void openUrl({String url}) {
+  launch(url, forceWebView: false, enableJavaScript: true);
 }

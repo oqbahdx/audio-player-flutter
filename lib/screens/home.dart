@@ -1,8 +1,9 @@
+import 'package:audioplayer/widgets/home_widget.dart';
+
 import '/bloc/cubit.dart';
 import '/bloc/states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -21,12 +22,60 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: Color(0xFF383B49),
-          body: Center(
-            child: Text(
-              'Home',
-              style: TextStyle(color: Colors.white, fontSize: 35),
-            ),
-          ),
+          body: Container(
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      homeContainer(
+                        onTap: () {},
+                        images: AppCubit.get(context).maroon5,
+                      ),
+                      homeContainer(
+                        onTap: () {},
+                        images: AppCubit.get(context).taylor,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      homeContainer(
+                        onTap: () {},
+                        images: AppCubit.get(context).minaj,
+                      ),
+                      homeContainer(
+                        onTap: () {},
+                        images: AppCubit.get(context).snoop,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      homeContainer(
+                        onTap: () {},
+                        images: AppCubit.get(context).flo,
+                      ),
+                      homeContainer(
+                        onTap: () {},
+                        images: AppCubit.get(context).miley,
+                      ),
+                    ],
+                  ),
+                ],
+              )),
         );
       },
     );
