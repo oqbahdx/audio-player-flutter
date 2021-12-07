@@ -23,11 +23,7 @@ class AppCubit extends Cubit<AppStates>{
     currentIndex = index;
     emit(ChangeScreensState());
   }
-  AudioPlayer audioPlayer = AudioPlayer();
-  playLocal() async {
-    int result = await audioPlayer.play('localPath', isLocal: true);
-    return result;
-  }
+
 
   List<FileSystemEntity> files;
   List<FileSystemEntity> songs = [];
@@ -83,6 +79,16 @@ class AppCubit extends Cubit<AppStates>{
     'images/miley4.jpg',
   ];
 
+  AudioPlayer audioPlayer = AudioPlayer();
+  PlayerState playerState = PlayerState.PAUSED;
+  AudioCache audioCache;
+
+  playAudio({String path})async{
+    await  audioPlayer.play(path, isLocal: true);
+  }
+  pauseAudio()async{
+    await audioPlayer.pause();
+  }
    }
 
 

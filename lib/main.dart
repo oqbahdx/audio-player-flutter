@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       create: (context) => AppCubit()..getAllAudios(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: TracksPage.id,
+        initialRoute: Layout.id,
         theme: ThemeData(textTheme: GoogleFonts.redHatDisplayTextTheme()),
         routes: {
           SplashScreen.id: (_) => const SplashScreen(),

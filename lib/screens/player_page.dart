@@ -1,3 +1,5 @@
+import 'package:audioplayer/bloc/cubit.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -5,8 +7,9 @@ import 'package:marquee/marquee.dart';
 
 class PlayerPage extends StatefulWidget {
   final String audioName;
+  final String audioPath;
 
-  const PlayerPage({this.audioName});
+  const PlayerPage({this.audioName, this.audioPath});
 
   static String id = 'PlayerPage';
 
@@ -14,32 +17,29 @@ class PlayerPage extends StatefulWidget {
   _PlayerPageState createState() => _PlayerPageState();
 }
 
-class _PlayerPageState extends State<PlayerPage>
-    with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> _animation;
-
+class _PlayerPageState extends State<PlayerPage> {
   @override
-  initState() {
+  void initState() {
+    AppCubit.get(context).audioCache =
+        AudioCache(fixedPlayer: AppCubit.get(context).audioPlayer);
+    AppCubit.get(context)
+        .audioPlayer
+        .onPlayerStateChanged
+        .listen((PlayerState state) {
+      setState(() {
+        AppCubit.get(context).playerState = state;
+      });
+    });
     super.initState();
-    _controller = AnimationController(
-        duration: const Duration(milliseconds: 2000),
-        vsync: this,
-        value: 0.001,
-        lowerBound: 0.001,
-        upperBound: 1.0);
-    _animation = CurvedAnimation(parent: _controller, curve: Curves.linear);
-
-    _controller.forward();
-    print(widget.audioName);
   }
-
-  @override
-  dispose() {
-    _controller.dispose();
-    super.dispose();
+ @override
+  void dispose() {
+   super.dispose();
+   AppCubit.get(context).audioPlayer.release();
+   AppCubit.get(context).audioPlayer.dispose();
+   AppCubit.get(context).audioCache.clearAll();
+    
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,19 +74,16 @@ class _PlayerPageState extends State<PlayerPage>
             const SizedBox(
               height: 150,
             ),
-            RotationTransition(
-              turns: _animation,
-              child: Container(
-                height: 250,
-                width: 250,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(150),
-                    color: Colors.black),
-                child: const Center(
-                  child: Text(
-                    '',
-                    style: TextStyle(fontSize: 35, color: Colors.white),
-                  ),
+            Container(
+              height: 250,
+              width: 250,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(150),
+                  color: Colors.black),
+              child: const Center(
+                child: Text(
+                  '',
+                  style: TextStyle(fontSize: 35, color: Colors.white),
                 ),
               ),
             ),
@@ -136,7 +133,15 @@ class _PlayerPageState extends State<PlayerPage>
                   ),
                 ],
               ),
-            )
+            ),
+            SizedBox(height: 20,),
+            IconButton(onPressed: () {
+              AppCubit.get(context).playerState == PlayerState.PLAYING?
+                  AppCubit.get(context).pauseAudio():
+                  AppCubit.get(context).playAudio(path: widget.audioPath);
+            }, icon: Icon(AppCubit.get(context).playerState == PlayerState.PLAYING?
+            Icons.pause:Icons.play_arrow_rounded
+            ),)
           ],
         ),
       ),

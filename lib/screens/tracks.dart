@@ -3,6 +3,7 @@ import 'package:audioplayer/bloc/states.dart';
 import 'package:audioplayer/components/navigator.dart';
 import 'package:audioplayer/screens/player_page.dart';
 import 'package:audioplayer/widgets/app_bar.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,23 +39,26 @@ class _TracksPageState extends State<TracksPage> {
             itemBuilder: (context, index) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: drawerCardTrack(
-                  onTap: () {
-                    moveToPageWithData(context,
-                        namePage: PlayerPage(
-                          audioName: AppCubit.get(context)
-                              .songs
-                              .elementAt(index)
-                              .path
-                              .split('/')
-                              .last,
-                        ));
-                  },
-                  name: AppCubit.get(context)
-                      .songs
-                      .elementAt(index)
-                      .path
-                      .split('/')
-                      .last),
+                onTap: () {
+                  moveToPageWithData(context,
+                      namePage: PlayerPage(
+                        audioName: AppCubit.get(context)
+                            .songs
+                            .elementAt(index)
+                            .path
+                            .split('/')
+                            .last,
+                        audioPath:
+                            AppCubit.get(context).songs.elementAt(index).path,
+                      ));
+                },
+                name: AppCubit.get(context)
+                    .songs
+                    .elementAt(index)
+                    .path
+                    .split('/')
+                    .last,
+              ),
             ),
           ),
         );

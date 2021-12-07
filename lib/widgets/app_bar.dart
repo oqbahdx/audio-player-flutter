@@ -1,5 +1,6 @@
 import 'package:audioplayer/components/navigator.dart';
 import 'package:audioplayer/screens/contact_us.dart';
+import 'package:audioplayer/screens/tracks.dart';
 import 'package:flutter/material.dart';
 
 import '../styles.dart';
@@ -52,7 +53,9 @@ Widget drawerBuild(BuildContext context){
       child: Column(
         children: [
           const SizedBox(height: 50,),
-          drawerCard(name: 'Tracks'),
+          drawerCard(name: 'Tracks',onTap: (){
+            moveToPage(context,namePage: TracksPage.id);
+          }),
           const SizedBox(height: 30,),
           drawerCard(name: 'Albums'),
           const SizedBox(height: 30,),
