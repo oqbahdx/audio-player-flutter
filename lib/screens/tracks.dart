@@ -3,7 +3,6 @@ import 'package:audioplayer/bloc/states.dart';
 import 'package:audioplayer/components/navigator.dart';
 import 'package:audioplayer/screens/player_page.dart';
 import 'package:audioplayer/widgets/app_bar.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

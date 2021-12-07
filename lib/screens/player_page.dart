@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:marquee/marquee.dart';
-
+import 'dart:math' as math;
 class PlayerPage extends StatefulWidget {
   final String audioName;
   final String audioPath;
@@ -17,9 +17,29 @@ class PlayerPage extends StatefulWidget {
   _PlayerPageState createState() => _PlayerPageState();
 }
 
-class _PlayerPageState extends State<PlayerPage> {
+class _PlayerPageState extends State<PlayerPage>  with SingleTickerProviderStateMixin{
+  int timeProgress = 0;
+  int audioDuration = 0;
+   AnimationController _controller;
+  void seekToSec(int sec) {
+    Duration position = Duration(
+      seconds: sec,
+    );
+    AppCubit.get(context).audioPlayer.seek(position);
+  }
+
+  String getTimeToString(int milliseconds) {
+    String minutes =
+        '${(milliseconds / 60000).floor() < 10 ? 0 : ''}${(milliseconds / 60000).floor()}';
+    String seconds =
+        '${(milliseconds / 1000).floor() < 10 ? 0 : ''}${(milliseconds / 1000).floor() % 60}';
+    return '${minutes}:${seconds}';
+  }
+
   @override
   void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this, duration: Duration(seconds: 2))..repeat();
     AppCubit.get(context).audioCache =
         AudioCache(fixedPlayer: AppCubit.get(context).audioPlayer);
     AppCubit.get(context)
@@ -30,22 +50,40 @@ class _PlayerPageState extends State<PlayerPage> {
         AppCubit.get(context).playerState = state;
       });
     });
-    super.initState();
+    AppCubit.get(context).audioPlayer.play(widget.audioPath);
+    AppCubit.get(context)
+        .audioPlayer
+        .onDurationChanged
+        .listen((Duration duration) {
+      setState(() {
+        audioDuration = duration.inMilliseconds;
+      });
+    });
+    AppCubit.get(context)
+        .audioPlayer
+        .onAudioPositionChanged
+        .listen((Duration position) {
+      setState(() {
+        timeProgress = position.inMilliseconds;
+      });
+    });
   }
- @override
+
+  @override
   void dispose() {
-   super.dispose();
-   AppCubit.get(context).audioPlayer.release();
-   AppCubit.get(context).audioPlayer.dispose();
-   AppCubit.get(context).audioCache.clearAll();
-    
+    super.dispose();
+    AppCubit.get(context).audioPlayer.release();
+    AppCubit.get(context).audioPlayer.dispose();
+    AppCubit.get(context).audioCache.clearAll();
   }
+
   @override
   Widget build(BuildContext context) {
+    var h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: Container(
-          height: 30,
+          height: h * 0.07,
           child: Marquee(
             text: widget.audioName,
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -71,24 +109,30 @@ class _PlayerPageState extends State<PlayerPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(
-              height: 150,
+            SizedBox(
+              height: h * 0.10,
             ),
-            Container(
-              height: 250,
-              width: 250,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(150),
-                  color: Colors.black),
-              child: const Center(
-                child: Text(
-                  '',
-                  style: TextStyle(fontSize: 35, color: Colors.white),
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (_, child) {
+                return Transform.rotate(
+                  angle: _controller.value * 2 * math.pi,
+                  child: child,
+                );
+              },
+              child:Container(
+                height: 250,
+                width: 250,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(150),
+                    color: Colors.black),
+                child:  Center(
+                  child: Image.asset('images/iconholder.png',fit: BoxFit.contain,color: Colors.white38,)
                 ),
               ),
             ),
             SizedBox(
-              height: 20,
+              height: h * 0.05,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -104,7 +148,7 @@ class _PlayerPageState extends State<PlayerPage> {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: h * 0.05,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -112,36 +156,44 @@ class _PlayerPageState extends State<PlayerPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '0.0',
+                    getTimeToString(timeProgress),
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                   Expanded(
                     child: Slider(
-                      value: 50,
-                      onChanged: (value) {},
+                      value: (timeProgress / 1000).floorToDouble(),
+                      onChanged: (value) {
+                        seekToSec(value.toInt());
+                      },
                       min: 0,
-                      max: 100,
+                      max: (audioDuration / 1000).floorToDouble(),
                       activeColor: Color(0xFFCC0066),
                       inactiveColor: Color(0xFFFFFFFF),
                     ),
                   ),
                   Text(
-                    '0.0',
+                    getTimeToString(audioDuration),
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 20,),
-            IconButton(onPressed: () {
-              AppCubit.get(context).playerState == PlayerState.PLAYING?
-                  AppCubit.get(context).pauseAudio():
-                  AppCubit.get(context).playAudio(path: widget.audioPath);
-            }, icon: Icon(AppCubit.get(context).playerState == PlayerState.PLAYING?
-            Icons.pause:Icons.play_arrow_rounded
-            ),)
+            SizedBox(
+              height: h * 0.05,
+            ),
+            IconButton(
+              onPressed: () {
+                AppCubit.get(context).playerState == PlayerState.PLAYING
+                    ? AppCubit.get(context).pauseAudio()
+                    : AppCubit.get(context).playAudio(path: widget.audioPath);
+              },
+              icon: Icon(
+                  AppCubit.get(context).playerState == PlayerState.PLAYING
+                      ? Icons.pause
+                      : Icons.play_arrow_rounded),
+            )
           ],
         ),
       ),

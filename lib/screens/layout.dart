@@ -22,6 +22,7 @@ class _LayoutState extends State<Layout> {
 
   @override
   Widget build(BuildContext context) {
+    var h = MediaQuery.of(context).size.height;
     var cubit = AppCubit.get(context);
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {},
@@ -46,7 +47,7 @@ class _LayoutState extends State<Layout> {
             child: cubit.screens.elementAt(cubit.currentIndex),
           ),
           bottomNavigationBar: Container(
-              height: 70,
+              height: h*0.09,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(

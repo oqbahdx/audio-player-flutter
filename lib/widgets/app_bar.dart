@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 
 import '../styles.dart';
 
+
 Widget appBarIcon() {
+  // double h = MediaQuery.of(context).size.height;
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      const SizedBox(
+       SizedBox(
         height: 5,
       ),
       Padding(
@@ -48,23 +50,24 @@ Widget buildContainer({double width = 25}) {
 }
 
 Widget drawerBuild(BuildContext context){
+  var h = MediaQuery.of(context).size.height;
   return  Drawer(
     child: Container(
       child: Column(
         children: [
-          const SizedBox(height: 50,),
+           SizedBox(height: h*0.1,),
           drawerCard(name: 'Tracks',onTap: (){
             moveToPage(context,namePage: TracksPage.id);
           }),
-          const SizedBox(height: 30,),
+          SizedBox(height: h*0.05,),
           drawerCard(name: 'Albums'),
-          const SizedBox(height: 30,),
+          SizedBox(height: h*0.05,),
           drawerCard(name: 'PlayLists'),
-          const SizedBox(height: 30,),
+          SizedBox(height: h*0.05,),
           drawerCard(name: 'Artis'),
-          const SizedBox(height: 30,),
+          SizedBox(height: h*0.05,),
           drawerCard(name: 'Settings'),
-          const SizedBox(height: 30,),
+          SizedBox(height: h*0.05,),
           drawerCard(name: 'Contact Us',onTap: (){
             moveToPage(context,namePage: ContactUs.id);
           }),
@@ -78,7 +81,8 @@ Widget drawerBuild(BuildContext context){
   );
 }
 
-Widget drawerCard({String name , Function onTap}){
+Widget drawerCard({String name , Function onTap,}){
+
   return  GestureDetector(
     onTap: onTap,
     child: Padding(
