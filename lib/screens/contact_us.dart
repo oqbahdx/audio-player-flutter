@@ -15,7 +15,7 @@ class _ContactUsState extends State<ContactUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF383B49),
+      backgroundColor: const Color(0xFF383B49),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -24,7 +24,7 @@ class _ContactUsState extends State<ContactUs> {
           alignment: Alignment.center,
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 150,
               ),
               GestureDetector(
@@ -33,7 +33,7 @@ class _ContactUsState extends State<ContactUs> {
 
                   openEmail("mailto:oqbahdx@gmail.com");
                 },
-                child: Text(
+                child: const Text(
                   'oqbahdx@gmail.com',
                   style: TextStyle(
                       fontSize: 25,
@@ -41,7 +41,7 @@ class _ContactUsState extends State<ContactUs> {
                       color: Colors.white),
                 ),
               ),
-             SizedBox(height: 250,),
+             const SizedBox(height: 250,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -50,7 +50,7 @@ class _ContactUsState extends State<ContactUs> {
                       launchFacebook('fb://profile/oqbah.dx.7',
                           'https://www.facebook.com/oqbah.dx.7');
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       FontAwesome.facebook_squared,
                       color: Colors.blue,
                       size: 60,
@@ -59,7 +59,7 @@ class _ContactUsState extends State<ContactUs> {
                     onPressed: () {
                       openUrl(url: 'https://github.com/oqbahdx');
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       FontAwesome.github_circled,
                       color: Colors.white,
                       size: 60,
@@ -68,7 +68,7 @@ class _ContactUsState extends State<ContactUs> {
                     onPressed: () {
                       openUrl(url: 'https://www.linkedin.com/in/oqbah-dx-25b9951b1/');
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       FontAwesome.linkedin_squared,
                       color: Colors.blue,
                       size: 60,
@@ -77,7 +77,7 @@ class _ContactUsState extends State<ContactUs> {
                     onPressed: () {
                       launchWhatsapp(context);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       FontAwesome.whatsapp,
                       color: Colors.teal,
                       size: 60,

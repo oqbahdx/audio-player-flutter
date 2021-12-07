@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
           SplashScreen.id: (_) => const SplashScreen(),
           HomePage.id:(_)=>const HomePage(),
           Layout.id:(_)=>const Layout(),
-          PlayerPage.id:(_)=>PlayerPage(),
-          ContactUs.id:(_)=>ContactUs(),
+          PlayerPage.id:(_)=>const PlayerPage(),
+          ContactUs.id:(_)=>const ContactUs(),
         },
       ),
     );

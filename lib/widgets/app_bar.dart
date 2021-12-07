@@ -8,18 +8,18 @@ Widget appBarIcon() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      SizedBox(
+      const SizedBox(
         height: 5,
       ),
       Padding(
         padding: const EdgeInsets.only(left: 5.0),
         child: buildContainer(),
       ),
-      SizedBox(
+      const SizedBox(
         height: 5,
       ),
       buildContainer(width: 45),
-      SizedBox(
+      const SizedBox(
         height: 5,
       ),
       Padding(
@@ -37,7 +37,7 @@ Widget buildContainer({double width = 25}) {
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(50),
       color: Colors.white,
-      gradient: LinearGradient(colors: [
+      gradient: const LinearGradient(colors: [
         Color(0xFFCC0066),
         Colors.white,
         Color(0xFFCC0066),
@@ -51,17 +51,17 @@ Widget drawerBuild(BuildContext context){
     child: Container(
       child: Column(
         children: [
-          SizedBox(height: 50,),
+          const SizedBox(height: 50,),
           drawerCard(name: 'Tracks'),
-          SizedBox(height: 30,),
+          const SizedBox(height: 30,),
           drawerCard(name: 'Albums'),
-          SizedBox(height: 30,),
+          const SizedBox(height: 30,),
           drawerCard(name: 'PlayLists'),
-          SizedBox(height: 30,),
+          const SizedBox(height: 30,),
           drawerCard(name: 'Artis'),
-          SizedBox(height: 30,),
+          const SizedBox(height: 30,),
           drawerCard(name: 'Settings'),
-          SizedBox(height: 30,),
+          const SizedBox(height: 30,),
           drawerCard(name: 'Contact Us',onTap: (){
             moveToPage(context,namePage: ContactUs.id);
           }),
@@ -89,13 +89,13 @@ Widget drawerCard({String name , Function onTap}){
         child: Container(
           height: 60,
           width: double.infinity,
-          child: Center(child: Text(name,style: TextStyle(
+          child: Center(child: Text(name,style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold
           ),)),
           decoration: BoxDecoration(
             // color: Colors.white38,
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: [
                 Color(0xFFCC0066),
                 Colors.white38,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 class PlayerPage extends StatefulWidget {
-   PlayerPage({Key key}) : super(key: key);
+   const PlayerPage({Key key}) : super(key: key);
    static String id = 'PlayerPage';
   @override
   _PlayerPageState createState() => _PlayerPageState();
@@ -10,10 +10,10 @@ class PlayerPage extends StatefulWidget {
 
 class _PlayerPageState extends State<PlayerPage> with SingleTickerProviderStateMixin {
 
-  @override
   AnimationController _controller;
   Animation<double> _animation;
 
+  @override
   initState() {
     super.initState();
     _controller = AnimationController(
@@ -33,14 +33,15 @@ class _PlayerPageState extends State<PlayerPage> with SingleTickerProviderStateM
     _controller.dispose();
     super.dispose();
   }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF383B49),
+      backgroundColor: const Color(0xFF383B49),
       body: Container(
         alignment: Alignment.center,
         child: Column(
           children: [
-            SizedBox(height: 150,),
+            const SizedBox(height: 150,),
             RotationTransition(
               turns: _animation,
               child: Container(
@@ -50,7 +51,7 @@ class _PlayerPageState extends State<PlayerPage> with SingleTickerProviderStateM
                   borderRadius: BorderRadius.circular(150),
                   color: Colors.black
                 ),
-                child: Center(
+                child: const Center(
                   child: Text('FLUTTER',style: TextStyle(
                     fontSize: 35,
                     color: Colors.white

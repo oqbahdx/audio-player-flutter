@@ -11,7 +11,7 @@ class Favorites extends StatefulWidget {
 class _FavoritesState extends State<Favorites> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Color(0xFF383B49),
       body: Center(
         child: Text('favorites' , style: TextStyle(color: Colors.white, fontSize: 35),),

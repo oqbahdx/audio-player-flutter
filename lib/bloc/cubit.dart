@@ -12,9 +12,9 @@ class AppCubit extends Cubit<AppStates>{
   static AppCubit get(context)=>BlocProvider.of(context);
 
   List<Widget> screens = [
-    HomePage(),
-    AllAudios(),
-    Favorites(),
+    const HomePage(),
+    const AllAudios(),
+    const Favorites(),
   ];
   int currentIndex = 0 ;
    changePages(int index){

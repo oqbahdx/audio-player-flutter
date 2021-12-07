@@ -36,13 +36,12 @@ class _LayoutState extends State<Layout> {
               return IconButton(
                 onPressed: () {
                   key.currentState.openDrawer();
-                  print('ok');
                 },
                 icon: Container(child: appBarIcon()),
               );
             }),
           ),
-          backgroundColor: Color(0xFF383B49),
+          backgroundColor: const Color(0xFF383B49),
           body: Center(
             child: cubit.screens.elementAt(cubit.currentIndex),
           ),
@@ -50,7 +49,7 @@ class _LayoutState extends State<Layout> {
               height: 70,
               width: double.infinity,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(100),
                   bottomRight: Radius.circular(100),
                 ),
@@ -66,7 +65,7 @@ class _LayoutState extends State<Layout> {
                 onTap: (int index) {
                   cubit.changePages(index);
                 },
-                items: [
+                items: const [
                   BottomNavigationBarItem(
                       icon: Icon(
                         Icons.home,

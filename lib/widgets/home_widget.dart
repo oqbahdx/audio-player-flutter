@@ -28,7 +28,7 @@ Widget homeContainer({Function onTap, List<String>images}) {
                 options: CarouselOptions(
                     height: 170,
                     autoPlay: true,
-                    autoPlayAnimationDuration: Duration(seconds: 2),
+                    autoPlayAnimationDuration: const Duration(seconds: 2),
                     initialPage: 0,
                     viewportFraction: 1,
 

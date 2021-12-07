@@ -10,7 +10,7 @@ class AllAudios extends StatefulWidget {
 class _AllAudiosState extends State<AllAudios> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Color(0xFF383B49),
       body: Center(
         child: Text(

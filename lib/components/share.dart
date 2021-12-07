@@ -17,25 +17,25 @@ void launchFacebook(String url, String fallbackUrl) async {
 
 launchWhatsapp(BuildContext context) async {
   var whatsapp = "+249929990093";
-  var whatsappURl_android =
+  var whatsappURlAndroid =
       "whatsapp://send?phone=" + whatsapp + "&text=hello oqbah from audio app";
-  var whatappURL_ios =
+  var whatsappURLIos =
       "https://wa.me/$whatsapp?text=${Uri.parse("hello oqbah form audio app")}";
   if (Platform.isIOS) {
     // for iOS phone only
-    if (await canLaunch(whatappURL_ios)) {
-      await launch(whatappURL_ios, forceSafariVC: false);
+    if (await canLaunch(whatsappURLIos)) {
+      await launch(whatsappURLIos, forceSafariVC: false);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: new Text("whatsapp is not installed")));
+          const SnackBar(content: Text("whatsapp is not installed")));
     }
   } else {
     // android , web
-    if (await canLaunch(whatsappURl_android)) {
-      await launch(whatsappURl_android);
+    if (await canLaunch(whatsappURlAndroid)) {
+      await launch(whatsappURlAndroid);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: new Text("whatsapp is not installed")));
+          const SnackBar(content: Text("whatsapp is not installed")));
     }
   }
 }
