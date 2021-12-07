@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import '/bloc/states.dart';
 import '/screens/all_audios.dart';
 import '/screens/favorites.dart';
@@ -26,8 +28,24 @@ class AppCubit extends Cubit<AppStates>{
     int result = await audioPlayer.play('localPath', isLocal: true);
     return result;
   }
-  // getAllFiles()async{
-  // File file = await
+
+  List<FileSystemEntity> files;
+  List<FileSystemEntity> songs = [];
+  getAllAudios(){
+    Directory dir = Directory('/storage/emulated/0/');
+    String mp3Path = dir.toString();
+    print(mp3Path);
+
+    files = dir.listSync(recursive: true, followLinks: false);
+    for(FileSystemEntity entity in files) {
+      String path = entity.path;
+      if(path.endsWith('.mp3'))
+        songs.add(entity);
+    }
+    print(songs);
+    print(songs.length);
+  }
+
   List<String> maroon5 = [
     'images/maroon1.jpg',
     'images/maroon2.jpg',
