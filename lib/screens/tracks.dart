@@ -1,5 +1,8 @@
 import 'package:audioplayer/bloc/cubit.dart';
 import 'package:audioplayer/bloc/states.dart';
+import 'package:audioplayer/components/navigator.dart';
+import 'package:audioplayer/screens/player_page.dart';
+import 'package:audioplayer/widgets/app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,23 +33,28 @@ class _TracksPageState extends State<TracksPage> {
             ),
           ),
           body: ListView.builder(
+            physics: BouncingScrollPhysics(),
             itemCount: AppCubit.get(context).songs.length,
             itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Card(
-                color: Colors.white,
-                child: Container(
-                  height: 50,
-                  child: Center(
-                      child: Text(AppCubit.get(context)
-                          .songs
-                          .elementAt(index)
-                          .path
-                          .split('/')
-                          .last
-                          .toString())),
-                ),
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: drawerCardTrack(
+                  onTap: () {
+                    moveToPageWithData(context,
+                        namePage: PlayerPage(
+                          audioName: AppCubit.get(context)
+                              .songs
+                              .elementAt(index)
+                              .path
+                              .split('/')
+                              .last,
+                        ));
+                  },
+                  name: AppCubit.get(context)
+                      .songs
+                      .elementAt(index)
+                      .path
+                      .split('/')
+                      .last),
             ),
           ),
         );

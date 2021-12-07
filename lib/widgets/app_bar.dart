@@ -110,3 +110,39 @@ Widget drawerCard({String name , Function onTap}){
     ),
   );
 }
+Widget drawerCardTrack({String name , Function onTap}){
+  return  GestureDetector(
+    onTap: onTap,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Card(
+        elevation: 30,
+        color: Colors.white38,
+        shape: RoundedRectangleBorder(
+          borderRadius:  BorderRadius.circular(15),
+        ),
+        child: Container(
+          height: 60,
+          width: double.infinity,
+          child: Center(child: Text(name,style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            overflow: TextOverflow.ellipsis
+          ),)),
+          decoration: BoxDecoration(
+            // color: Colors.white38,
+            gradient: const LinearGradient(
+              colors: [
+
+                Colors.white38,
+                Colors.black38
+              ],
+
+            ),
+            borderRadius: BorderRadius.circular(15),
+          ),
+        ),
+      ),
+    ),
+  );
+}

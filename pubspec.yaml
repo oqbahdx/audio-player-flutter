@@ -43,6 +43,7 @@ dependencies:
   audioplayers: ^0.20.1
   url_launcher: ^6.0.17
   carousel_slider: ^4.0.0
+  marquee: ^2.2.0
 
 dev_dependencies:
   flutter_test:
