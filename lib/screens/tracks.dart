@@ -6,7 +6,7 @@ import 'package:audioplayer/widgets/app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'dart:io';
 class TracksPage extends StatefulWidget {
   const TracksPage({Key key}) : super(key: key);
   static String id = 'TracksPage';
@@ -16,6 +16,7 @@ class TracksPage extends StatefulWidget {
 }
 
 class _TracksPageState extends State<TracksPage> {
+  // List<int> mp3Bytes = File('').readAsBytesSync();
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(

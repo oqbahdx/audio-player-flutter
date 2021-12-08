@@ -1,10 +1,12 @@
 import 'package:audioplayer/bloc/cubit.dart';
+import 'package:audioplayer/styles.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:marquee/marquee.dart';
 import 'dart:math' as math;
+
 class PlayerPage extends StatefulWidget {
   final String audioName;
   final String audioPath;
@@ -17,10 +19,12 @@ class PlayerPage extends StatefulWidget {
   _PlayerPageState createState() => _PlayerPageState();
 }
 
-class _PlayerPageState extends State<PlayerPage>  with SingleTickerProviderStateMixin{
+class _PlayerPageState extends State<PlayerPage>
+    with SingleTickerProviderStateMixin {
   int timeProgress = 0;
   int audioDuration = 0;
-   AnimationController _controller;
+  AnimationController _controller;
+
   void seekToSec(int sec) {
     Duration position = Duration(
       seconds: sec,
@@ -39,7 +43,9 @@ class _PlayerPageState extends State<PlayerPage>  with SingleTickerProviderState
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: Duration(seconds: 2))..repeat();
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 2))
+          ..repeat();
     AppCubit.get(context).audioCache =
         AudioCache(fixedPlayer: AppCubit.get(context).audioPlayer);
     AppCubit.get(context)
@@ -79,6 +85,7 @@ class _PlayerPageState extends State<PlayerPage>  with SingleTickerProviderState
 
   @override
   Widget build(BuildContext context) {
+    var cubit = AppCubit.get(context);
     var h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
@@ -120,15 +127,18 @@ class _PlayerPageState extends State<PlayerPage>  with SingleTickerProviderState
                   child: child,
                 );
               },
-              child:Container(
+              child: Container(
                 height: 250,
                 width: 250,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(150),
                     color: Colors.black),
-                child:  Center(
-                  child: Image.asset('images/iconholder.png',fit: BoxFit.contain,color: Colors.white38,)
-                ),
+                child: Center(
+                    child: Image.asset(
+                  'images/iconholder.png',
+                  fit: BoxFit.contain,
+                  color: Colors.white38,
+                )),
               ),
             ),
             SizedBox(
@@ -161,7 +171,9 @@ class _PlayerPageState extends State<PlayerPage>  with SingleTickerProviderState
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                   Expanded(
-                    child: Slider(
+                    child: Slider.adaptive(
+                      divisions: 100,
+                      label: getTimeToString(timeProgress),
                       value: (timeProgress / 1000).floorToDouble(),
                       onChanged: (value) {
                         seekToSec(value.toInt());
@@ -183,16 +195,36 @@ class _PlayerPageState extends State<PlayerPage>  with SingleTickerProviderState
             SizedBox(
               height: h * 0.05,
             ),
-            IconButton(
-              onPressed: () {
-                AppCubit.get(context).playerState == PlayerState.PLAYING
-                    ? AppCubit.get(context).pauseAudio()
-                    : AppCubit.get(context).playAudio(path: widget.audioPath);
-              },
-              icon: Icon(
-                  AppCubit.get(context).playerState == PlayerState.PLAYING
-                      ? Icons.pause
-                      : Icons.play_arrow_rounded),
+            Container(
+              height: 60,
+              width: 60,
+              decoration: BoxDecoration(
+                  color: Colors.white38,
+                  borderRadius: BorderRadius.circular(100),
+                  gradient: LinearGradient(
+                    colors: [
+                      const Color(0xFFCC0066),
+                      const Color(0xFF383B49),
+                      const Color(0xFFCC0066),
+                    ],
+                  )),
+              child: IconButton(
+                  onPressed: () {
+                    cubit.playerState == PlayerState.PLAYING
+                        ? cubit.pauseAudio()
+                        : cubit.playAudio(path: widget.audioPath);
+                  },
+                  icon: cubit.playerState == PlayerState.PLAYING
+                      ? Icon(
+                          Icons.pause,
+                          color: Colors.red,
+                          size: 50,
+                        )
+                      : Icon(
+                          Icons.play_arrow_rounded,
+                          color: Colors.blue,
+                          size: 50,
+                        )),
             )
           ],
         ),
