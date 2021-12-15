@@ -33,7 +33,7 @@ class _TracksPageState extends State<TracksPage> {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-          body: ListView.builder(
+          body: AppCubit.get(context).songs.length>0?ListView.builder(
             physics: BouncingScrollPhysics(),
             itemCount: AppCubit.get(context).songs.length,
             itemBuilder: (context, index) => Padding(
@@ -60,7 +60,11 @@ class _TracksPageState extends State<TracksPage> {
                     .last,
               ),
             ),
-          ),
+          ):Center(child: Text("No Tracks",style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 35,
+            color: Colors.white54
+          ),),),
         );
       },
     );

@@ -77,10 +77,12 @@ class _PlayerPageState extends State<PlayerPage>
 
   @override
   void dispose() {
-    super.dispose();
+
     AppCubit.get(context).audioPlayer.release();
     AppCubit.get(context).audioPlayer.dispose();
     AppCubit.get(context).audioCache.clearAll();
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -154,6 +156,7 @@ class _PlayerPageState extends State<PlayerPage>
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       overflow: TextOverflow.clip),
+                  maxLines: 1,
                 ),
               ),
             ),
