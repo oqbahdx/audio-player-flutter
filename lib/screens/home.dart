@@ -22,60 +22,60 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: const Color(0xFF383B49),
-          body: Container(
-              alignment: Alignment.center,
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      homeContainer(
-                        onTap: () {},
-                        images: AppCubit.get(context).maroon5,
-                      ),
-                      homeContainer(
-                        onTap: () {},
-                        images: AppCubit.get(context).taylor,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      homeContainer(
-                        onTap: () {},
-                        images: AppCubit.get(context).minaj,
-                      ),
-                      homeContainer(
-                        onTap: () {},
-                        images: AppCubit.get(context).snoop,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      homeContainer(
-                        onTap: () {},
-                        images: AppCubit.get(context).flo,
-                      ),
-                      homeContainer(
-                        onTap: () {},
-                        images: AppCubit.get(context).miley,
-                      ),
-                    ],
-                  ),
-                ],
-              )),
+          // body: Container(
+          //     alignment: Alignment.center,
+          //     child: Column(
+          //       children: [
+          //         const SizedBox(
+          //           height: 20,
+          //         ),
+          //         Row(
+          //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //           children: [
+          //             homeContainer(
+          //               onTap: () {},
+          //               images: AppCubit.get(context).maroon5,
+          //             ),
+          //             homeContainer(
+          //               onTap: () {},
+          //               images: AppCubit.get(context).taylor,
+          //             ),
+          //           ],
+          //         ),
+          //         const SizedBox(
+          //           height: 30,
+          //         ),
+          //         Row(
+          //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //           children: [
+          //             homeContainer(
+          //               onTap: () {},
+          //               images: AppCubit.get(context).minaj,
+          //             ),
+          //             homeContainer(
+          //               onTap: () {},
+          //               images: AppCubit.get(context).snoop,
+          //             ),
+          //           ],
+          //         ),
+          //         const SizedBox(
+          //           height: 30,
+          //         ),
+          //         Row(
+          //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //           children: [
+          //             homeContainer(
+          //               onTap: () {},
+          //               images: AppCubit.get(context).flo,
+          //             ),
+          //             homeContainer(
+          //               onTap: () {},
+          //               images: AppCubit.get(context).miley,
+          //             ),
+          //           ],
+          //         ),
+          //       ],
+          //     )),
         );
       },
     );

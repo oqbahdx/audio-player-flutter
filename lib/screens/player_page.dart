@@ -214,6 +214,7 @@ class _PlayerPageState extends State<PlayerPage>
                   )),
               child: IconButton(
                   onPressed: () {
+
                     cubit.playerState == PlayerState.PLAYING
                         ? cubit.pauseAudio()
                         : cubit.playAudio(path: widget.audioPath);

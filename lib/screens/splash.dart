@@ -25,7 +25,53 @@ class _SplashScreenState extends State<SplashScreen> {
     return  Scaffold(
       backgroundColor: const Color(0xFF383B49),
       body: Center(
-        child: Image.asset('assets/Logo.png'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const LinearProgressIndicator(
+
+              color: Color(0xFFCC0066),
+               backgroundColor: Color(0xFF383B49),
+            ),
+            const SizedBox(height: 20,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const RotatedBox(
+                  quarterTurns: 1,
+                  child: SizedBox(
+                    width: 100,
+                    child: LinearProgressIndicator(
+
+                      color: Color(0xFFCC0066),
+                       backgroundColor: Color(0xFF383B49),
+                    ),
+                  ),
+                ),
+                Image.asset('assets/appLogo.png',width: 150,height: 150,),
+                const RotatedBox(
+                  quarterTurns: 1,
+                  child: SizedBox(
+                    width: 100,
+                    child: LinearProgressIndicator(
+
+                      color: Color(0xFFCC0066),
+                       backgroundColor: Color(0xFF383B49),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20,),
+            const RotatedBox(
+              quarterTurns: 2,
+              child: LinearProgressIndicator(
+                color: Color(0xFFCC0066),
+                 backgroundColor: Color(0xFF383B49),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

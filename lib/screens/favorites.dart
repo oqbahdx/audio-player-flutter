@@ -1,5 +1,6 @@
 import 'package:audioplayer/bloc/cubit.dart';
 import 'package:audioplayer/bloc/states.dart';
+import 'package:audioplayer/storage/shared_pref.dart';
 import 'package:audioplayer/styles/styles.dart';
 import 'package:audioplayer/widgets/favorite.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,11 @@ class Favorites extends StatefulWidget {
 }
 
 class _FavoritesState extends State<Favorites> {
+  @override
+  void initState() {
+    SharedPref.getData(key: 'favorite');
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     var cubit = AppCubit.get(context);
@@ -42,7 +48,7 @@ class _FavoritesState extends State<Favorites> {
                           thickness: 1.5,
                           color: Colors.white,
                         ),
-                    itemCount: cubit.favorites.length)
+                    itemCount: AppCubit.get(context).favorites.length)
                 : Center(
                     child: Text(
                       'Favorite is empty',

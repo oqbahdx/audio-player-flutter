@@ -8,7 +8,7 @@ Widget buildCard({String name}){
     child: Container(
       child: Center(
         child: Text(name,style: const TextStyle(
-          fontSize: 25,
+          fontSize: 22,
           color: Colors.white
         ),maxLines: 1,),
       ),
