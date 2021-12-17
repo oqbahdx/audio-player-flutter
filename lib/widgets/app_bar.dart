@@ -3,7 +3,7 @@ import 'package:audioplayer/screens/contact_us.dart';
 import 'package:audioplayer/screens/tracks.dart';
 import 'package:flutter/material.dart';
 
-import '../styles.dart';
+import '../styles/styles.dart';
 
 
 Widget appBarIcon() {
@@ -11,7 +11,7 @@ Widget appBarIcon() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-       SizedBox(
+       const SizedBox(
         height: 5,
       ),
       Padding(
@@ -117,36 +117,35 @@ Widget drawerCard({String name , Function onTap,}){
     ),
   );
 }
-Widget drawerCardTrack({String name , Function onTap}){
+
+Widget drawerCardTrack({String name , Function onTap,Function longTap}){
   return  GestureDetector(
     onTap: onTap,
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Card(
-        elevation: 30,
-        color: Colors.white38,
-        shape: RoundedRectangleBorder(
-          borderRadius:  BorderRadius.circular(15),
-        ),
-        child: Container(
-          height: 60,
-          width: double.infinity,
-          child: Center(child: Text(name,style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            overflow: TextOverflow.ellipsis
-          ),)),
-          decoration: BoxDecoration(
-            // color: Colors.white38,
-            gradient: const LinearGradient(
-              colors: [
+    onLongPress: longTap,
+    child: Card(
+      elevation: 30,
+      color: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius:  BorderRadius.circular(15),
+      ),
+      child: Container(
+        height: 60,
+        width: double.infinity,
+        child: Center(child: Text(name,style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          color: Colors.white,
+          overflow: TextOverflow.ellipsis
+        ),)),
+        decoration: BoxDecoration(
 
-                Colors.white38,
-                Colors.black38
-              ],
+          gradient:  LinearGradient(
+            colors: gradientColors,
 
-            ),
-            borderRadius: BorderRadius.circular(15),
+          ),
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(50),
+            bottomRight: Radius.circular(50)
           ),
         ),
       ),

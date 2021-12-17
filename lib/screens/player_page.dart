@@ -1,5 +1,4 @@
 import 'package:audioplayer/bloc/cubit.dart';
-import 'package:audioplayer/styles.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +10,11 @@ class PlayerPage extends StatefulWidget {
   final String audioName;
   final String audioPath;
 
-  const PlayerPage({this.audioName, this.audioPath});
+
 
   static String id = 'PlayerPage';
+
+  const PlayerPage({Key key,this.audioName,this.audioPath}) : super(key: key);
 
   @override
   _PlayerPageState createState() => _PlayerPageState();
@@ -37,14 +38,14 @@ class _PlayerPageState extends State<PlayerPage>
         '${(milliseconds / 60000).floor() < 10 ? 0 : ''}${(milliseconds / 60000).floor()}';
     String seconds =
         '${(milliseconds / 1000).floor() < 10 ? 0 : ''}${(milliseconds / 1000).floor() % 60}';
-    return '${minutes}:${seconds}';
+    return '$minutes:$seconds';
   }
 
   @override
   void initState() {
     super.initState();
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 2))
+        AnimationController(vsync: this, duration: const Duration(seconds: 2))
           ..repeat();
     AppCubit.get(context).audioCache =
         AudioCache(fixedPlayer: AppCubit.get(context).audioPlayer);
@@ -91,20 +92,20 @@ class _PlayerPageState extends State<PlayerPage>
     var h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: Container(
+        title: SizedBox(
           height: h * 0.07,
           child: Marquee(
             text: widget.audioName,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
             scrollAxis: Axis.horizontal,
             crossAxisAlignment: CrossAxisAlignment.start,
             blankSpace: 20.0,
             velocity: 100.0,
-            pauseAfterRound: Duration(seconds: 1),
+            pauseAfterRound: const Duration(seconds: 1),
             startPadding: 10.0,
-            accelerationDuration: Duration(seconds: 1),
+            accelerationDuration: const Duration(seconds: 1),
             accelerationCurve: Curves.linear,
-            decelerationDuration: Duration(milliseconds: 500),
+            decelerationDuration: const Duration(milliseconds: 500),
             decelerationCurve: Curves.easeOut,
           ),
         ),
@@ -151,7 +152,7 @@ class _PlayerPageState extends State<PlayerPage>
               child: Center(
                 child: Text(
                   widget.audioName,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 25,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -170,7 +171,7 @@ class _PlayerPageState extends State<PlayerPage>
                 children: [
                   Text(
                     getTimeToString(timeProgress),
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                   Expanded(
@@ -183,13 +184,13 @@ class _PlayerPageState extends State<PlayerPage>
                       },
                       min: 0,
                       max: (audioDuration / 1000).floorToDouble(),
-                      activeColor: Color(0xFFCC0066),
-                      inactiveColor: Color(0xFFFFFFFF),
+                      activeColor: const Color(0xFFCC0066),
+                      inactiveColor: const Color(0xFFFFFFFF),
                     ),
                   ),
                   Text(
                     getTimeToString(audioDuration),
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -204,11 +205,11 @@ class _PlayerPageState extends State<PlayerPage>
               decoration: BoxDecoration(
                   color: Colors.white38,
                   borderRadius: BorderRadius.circular(100),
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [
-                      const Color(0xFFCC0066),
-                      const Color(0xFF383B49),
-                      const Color(0xFFCC0066),
+                      Color(0xFFCC0066),
+                      Color(0xFF383B49),
+                      Color(0xFFCC0066),
                     ],
                   )),
               child: IconButton(
@@ -218,12 +219,12 @@ class _PlayerPageState extends State<PlayerPage>
                         : cubit.playAudio(path: widget.audioPath);
                   },
                   icon: cubit.playerState == PlayerState.PLAYING
-                      ? Icon(
+                      ? const Icon(
                           Icons.pause,
                           color: Colors.red,
                           size: 50,
                         )
-                      : Icon(
+                      : const Icon(
                           Icons.play_arrow_rounded,
                           color: Colors.blue,
                           size: 50,

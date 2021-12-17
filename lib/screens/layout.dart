@@ -1,12 +1,11 @@
 import 'package:audioplayer/bloc/cubit.dart';
 import 'package:audioplayer/bloc/states.dart';
 import 'package:audioplayer/widgets/app_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 
-import '../styles.dart';
+import '../styles/styles.dart';
 
 class Layout extends StatefulWidget {
   const Layout({Key key}) : super(key: key);

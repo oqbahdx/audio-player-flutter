@@ -112,4 +112,17 @@ class AppCubit extends Cubit<AppStates> {
     pauseAudio() async {
       await audioPlayer.pause();
     }
+    List favorites = [];
+
+    addToFavorites({FileSystemEntity fileName}){
+
+        favorites.add(fileName);
+
+      emit(AddToFavoritesState());
+    }
+    removeFromFavorites({int index}){
+      favorites.removeAt(index);
+      emit(RemoveFromFavoritesState());
+
+    }
   }

@@ -3,6 +3,7 @@ import 'package:audioplayer/screens/contact_us.dart';
 import 'package:audioplayer/screens/home.dart';
 import 'package:audioplayer/screens/layout.dart';
 import 'package:audioplayer/screens/player_page.dart';
+import 'package:audioplayer/screens/setting.dart';
 import 'package:audioplayer/screens/splash.dart';
 import 'package:audioplayer/screens/tracks.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       create: (context) => AppCubit()..getAllAudios(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: Layout.id,
+        initialRoute: SplashScreen.id,
         theme: ThemeData(textTheme: GoogleFonts.redHatDisplayTextTheme()),
         routes: {
           SplashScreen.id: (_) => const SplashScreen(),
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
           PlayerPage.id: (_) => const PlayerPage(),
           ContactUs.id: (_) => const ContactUs(),
           TracksPage.id:(_)=>const TracksPage(),
+          SettingPage.id:(_)=>const SettingPage()
         },
       ),
     );
