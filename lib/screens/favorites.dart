@@ -17,7 +17,7 @@ class Favorites extends StatefulWidget {
 class _FavoritesState extends State<Favorites> {
   @override
   void initState() {
-    SharedPref.getData(key: 'favorite');
+    // SharedPref.getData(key: 'favorite');
     super.initState();
   }
 

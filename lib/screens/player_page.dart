@@ -146,12 +146,12 @@ class _PlayerPageState extends State<PlayerPage>
                 width: 250,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(150),
-                    color: Colors.black),
+                    color: Theme.of(context).colorScheme.primary),
                 child: Center(
                     child: Image.asset(
                       'images/iconholder.png',
                       fit: BoxFit.contain,
-                      color: Colors.white38,
+                      color:Theme.of(context).colorScheme.secondary,
                     )),
               ),
             ),
@@ -191,8 +191,8 @@ class _PlayerPageState extends State<PlayerPage>
                           .of(context)
                           .sliderTheme
                           .copyWith(
-                        activeTrackColor: Color(0xFFCC0066),
-                        inactiveTrackColor: Colors.white,
+                        activeTrackColor: Theme.of(context).colorScheme.primary,
+                        inactiveTrackColor: Theme.of(context).colorScheme.secondary,
 
                       ),
                       child: Slider.adaptive(
@@ -226,11 +226,12 @@ class _PlayerPageState extends State<PlayerPage>
               decoration: BoxDecoration(
                   color: Colors.white38,
                   borderRadius: BorderRadius.circular(100),
-                  gradient: const LinearGradient(
+                  gradient:  LinearGradient(
                     colors: [
-                      Color(0xFFCC0066),
-                      Color(0xFF383B49),
-                      Color(0xFFCC0066),
+                      Theme.of(context).colorScheme.secondary,
+                      Theme.of(context).colorScheme.primary,
+                      Theme.of(context).colorScheme.primary,
+                      Theme.of(context).colorScheme.secondary,
                     ],
                   )),
               child: IconButton(

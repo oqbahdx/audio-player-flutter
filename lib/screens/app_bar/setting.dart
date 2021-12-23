@@ -1,3 +1,6 @@
+import 'package:audioplayer/components/navigator.dart';
+import 'package:audioplayer/screens/themes.dart';
+import 'package:audioplayer/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 
 class SettingPage extends StatefulWidget {
@@ -18,56 +21,17 @@ class _SettingPageState extends State<SettingPage>
         elevation: 0.0,
         backgroundColor: Colors.transparent,
       ),
-      body: GridView(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 0.501,
-          mainAxisSpacing: 4.0,
-          crossAxisSpacing: 4.0,
-        ),
+      body:Column(
+
         children: [
-          SizedBox(
-            height: 150,
-            width: 20,
-            child: Image.asset(
-              'images/BB.png',
-              height: double.infinity,
-              width: double.infinity,
-            ),
-          ),
-          SizedBox(
-            height: 150,
-            width: 20,
-            child: Image.asset(
-              'images/BT.png',
-              height: double.infinity,
-              width: double.infinity,
-            ),
-          ),
-          SizedBox(
-            height: 150,
-            width: 20,
-            child: Image.asset(
-              'images/PB.png',
-              height: double.infinity,
-              width: double.infinity,
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            height: 150,
-            width: 20,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                'images/RB.png',
-                height: double.infinity,
-                width: double.infinity,
-              ),
-            ),
-          ),
+          const SizedBox(height: 50,),
+          drawerCardBuild(name: "Themes",onTap: (){
+            moveToPage(context,namePage: ThemesPage.id);
+          },),
+          const SizedBox(height: 20,),
+          drawerCardBuild(name: "Languages",onTap: (){
+            // moveToPage(context,namePage: ThemesPage.id);
+          },),
         ],
       ),
     );
