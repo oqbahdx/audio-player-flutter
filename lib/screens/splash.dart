@@ -23,15 +23,57 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: const Color(0xFF383B49),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const RotatedBox(
+              quarterTurns: 2,
+              child: LinearProgressIndicator(
+                // color: Color(0xFFCC0066),
+                // backgroundColor: Color(0xFF383B49),
+              ),
+            ),
+            const SizedBox(height: 20,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                SizedBox(
+                  height: 50,
+                  width: 4,
+                  child: RotatedBox(
+                      quarterTurns: 1,
+                      child: LinearProgressIndicator(
+                        // color: Color(0xFFCC0066),
+                        // backgroundColor: Color(0xFF383B49),
+                      )),
+                ),
+                SizedBox(
+                  height: 50,
+                  width: 4,
+                  child: RotatedBox(
+                      quarterTurns: 1,
+                      child: LinearProgressIndicator(
+                        // color: Color(0xFFCC0066),
+                        // backgroundColor: Color(0xFF383B49),
+                      )),
+                ),
+                SizedBox(
+                  height: 50,
+                  width: 4,
+                  child: RotatedBox(
+                      quarterTurns: 1,
+                      child: LinearProgressIndicator(
+                        // color: Color(0xFFCC0066),
+                        // backgroundColor: Color(0xFF383B49),
+                      )),
+                ),
+            ],),
+            const SizedBox(height: 20,),
             const LinearProgressIndicator(
 
-              color: Color(0xFFCC0066),
-               backgroundColor: Color(0xFF383B49),
+              // color: Color(0xFFCC0066),
+              //  backgroundColor: Color(0xFF383B49),
             ),
             const SizedBox(height: 20,),
             Row(
@@ -43,8 +85,8 @@ class _SplashScreenState extends State<SplashScreen> {
                     width: 100,
                     child: LinearProgressIndicator(
 
-                      color: Color(0xFFCC0066),
-                       backgroundColor: Color(0xFF383B49),
+                      // color: Color(0xFFCC0066),
+                      //  backgroundColor: Color(0xFF383B49),
                     ),
                   ),
                 ),
@@ -55,8 +97,8 @@ class _SplashScreenState extends State<SplashScreen> {
                     width: 100,
                     child: LinearProgressIndicator(
 
-                      color: Color(0xFFCC0066),
-                       backgroundColor: Color(0xFF383B49),
+                      // color: Color(0xFFCC0066),
+                      //  backgroundColor: Color(0xFF383B49),
                     ),
                   ),
                 ),
@@ -66,9 +108,50 @@ class _SplashScreenState extends State<SplashScreen> {
             const RotatedBox(
               quarterTurns: 2,
               child: LinearProgressIndicator(
-                color: Color(0xFFCC0066),
-                 backgroundColor: Color(0xFF383B49),
+                // color: Color(0xFFCC0066),
+                //  backgroundColor: Color(0xFF383B49),
               ),
+            ),
+            const SizedBox(height: 20,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                SizedBox(
+                  height: 50,
+                  width: 4,
+                  child: RotatedBox(
+                      quarterTurns: 1,
+                      child: LinearProgressIndicator(
+                        // color: Color(0xFFCC0066),
+                        // backgroundColor: Color(0xFF383B49),
+                      )),
+                ),
+                SizedBox(
+                  height: 50,
+                  width: 4,
+                  child: RotatedBox(
+                      quarterTurns: 1,
+                      child: LinearProgressIndicator(
+                        // color: Color(0xFFCC0066),
+                        // backgroundColor: Color(0xFF383B49),
+                      )),
+                ),
+                SizedBox(
+                  height: 50,
+                  width: 4,
+                  child: RotatedBox(
+                      quarterTurns: 1,
+                      child: LinearProgressIndicator(
+                        // color: Color(0xFFCC0066),
+                        // backgroundColor: Color(0xFF383B49),
+                      )),
+                ),
+              ],),
+            const SizedBox(height: 20,),
+            const LinearProgressIndicator(
+              // color: Color(
+              //     0xFFCC0066),
+              // backgroundColor: Color(0xFF383B49),
             ),
           ],
         ),

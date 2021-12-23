@@ -14,7 +14,6 @@ class _ContactUsState extends State<ContactUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF383B49),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,

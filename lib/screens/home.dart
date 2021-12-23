@@ -1,4 +1,4 @@
-import 'package:audioplayer/widgets/home_widget.dart';
+
 
 import '/bloc/cubit.dart';
 import '/bloc/states.dart';
@@ -20,8 +20,8 @@ class _HomePageState extends State<HomePage> {
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        return Scaffold(
-          backgroundColor: const Color(0xFF383B49),
+        return const Scaffold(
+          // backgroundColor: Color(0xFF383B49),
           // body: Container(
           //     alignment: Alignment.center,
           //     child: Column(

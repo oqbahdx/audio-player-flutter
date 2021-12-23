@@ -2,6 +2,7 @@ import 'package:audioplayer/bloc/cubit.dart';
 import 'package:audioplayer/bloc/states.dart';
 import 'package:audioplayer/storage/shared_pref.dart';
 import 'package:audioplayer/styles/styles.dart';
+import 'package:audioplayer/widgets/app_bar.dart';
 import 'package:audioplayer/widgets/favorite.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +20,7 @@ class _FavoritesState extends State<Favorites> {
     SharedPref.getData(key: 'favorite');
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     var cubit = AppCubit.get(context);
@@ -26,7 +28,7 @@ class _FavoritesState extends State<Favorites> {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-            backgroundColor: const Color(0xFF383B49),
+
             body: cubit.favorites.isNotEmpty
                 ? ListView.separated(
                     itemBuilder: (context, index) => Padding(
@@ -36,8 +38,8 @@ class _FavoritesState extends State<Favorites> {
                             onDismissed: (DismissDirection direction) {
                               cubit.removeFromFavorites(index: index);
                             },
-                             direction: DismissDirection.endToStart,
-                            child: buildCard(
+                            direction: DismissDirection.endToStart,
+                            child: DrawerCardTrackBuild(
                                 name: cubit.favorites[index].path
                                     .split('/')
                                     .last

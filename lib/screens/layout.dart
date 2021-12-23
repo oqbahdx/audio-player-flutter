@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 
-import '../styles/styles.dart';
 
 class Layout extends StatefulWidget {
   const Layout({Key key}) : super(key: key);
@@ -30,7 +29,7 @@ class _LayoutState extends State<Layout> {
           drawer: drawerBuild(context),
           key: key,
           appBar: AppBar(
-            backgroundColor: Colors.transparent,
+           backgroundColor: Colors.transparent,
             elevation: 0,
             leading: Builder(builder: (context) {
               return IconButton(
@@ -41,7 +40,7 @@ class _LayoutState extends State<Layout> {
               );
             }),
           ),
-          backgroundColor: const Color(0xFF383B49),
+          // backgroundColor: const Color(0xFF383B49),
           body: Center(
             child: cubit.screens.elementAt(cubit.currentIndex),
           ),
@@ -53,12 +52,16 @@ class _LayoutState extends State<Layout> {
                   topLeft: Radius.circular(100),
                   bottomRight: Radius.circular(100),
                 ),
-                gradient: LinearGradient(colors: gradientColors),
-                color: Colors.white,
+                gradient: LinearGradient(colors: [
+                  Theme.of(context).colorScheme.secondary,
+                  Theme.of(context).colorScheme.primary,
+                  Theme.of(context).colorScheme.primary,
+                  Theme.of(context).colorScheme.secondary,
+                ]),
+                // color: Colors.white,
               ),
               child: BottomNavigationBar(
-                selectedItemColor: Colors.white,
-                unselectedItemColor: Colors.white38,
+
                 elevation: 20.0,
                 backgroundColor: Colors.transparent,
                 currentIndex: cubit.currentIndex,
