@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'layout.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key key}) : super(key: key);
@@ -15,14 +16,24 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void didChangeDependencies() {
-    Timer(const Duration(seconds: 3),(){
-      Navigator.of(context).pushNamed( Layout.id);
+    Timer(const Duration(seconds: 3), () async {
+      var status = await Permission.storage.request();
+      if (status.isDenied) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(""
+                "you need permission for storage")));
+      }
+
+      if (await Permission.storage.isGranted) {
+        Navigator.of(context).pushNamed(Layout.id);
+      }
     });
     super.didChangeDependencies();
   }
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -30,11 +41,13 @@ class _SplashScreenState extends State<SplashScreen> {
             const RotatedBox(
               quarterTurns: 2,
               child: LinearProgressIndicator(
-                // color: Color(0xFFCC0066),
-                // backgroundColor: Color(0xFF383B49),
-              ),
+                  // color: Color(0xFFCC0066),
+                  // backgroundColor: Color(0xFF383B49),
+                  ),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: const [
@@ -44,9 +57,9 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: RotatedBox(
                       quarterTurns: 1,
                       child: LinearProgressIndicator(
-                        // color: Color(0xFFCC0066),
-                        // backgroundColor: Color(0xFF383B49),
-                      )),
+                          // color: Color(0xFFCC0066),
+                          // backgroundColor: Color(0xFF383B49),
+                          )),
                 ),
                 SizedBox(
                   height: 50,
@@ -54,9 +67,9 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: RotatedBox(
                       quarterTurns: 1,
                       child: LinearProgressIndicator(
-                        // color: Color(0xFFCC0066),
-                        // backgroundColor: Color(0xFF383B49),
-                      )),
+                          // color: Color(0xFFCC0066),
+                          // backgroundColor: Color(0xFF383B49),
+                          )),
                 ),
                 SizedBox(
                   height: 50,
@@ -64,18 +77,23 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: RotatedBox(
                       quarterTurns: 1,
                       child: LinearProgressIndicator(
-                        // color: Color(0xFFCC0066),
-                        // backgroundColor: Color(0xFF383B49),
-                      )),
+                          // color: Color(0xFFCC0066),
+                          // backgroundColor: Color(0xFF383B49),
+                          )),
                 ),
-            ],),
-            const SizedBox(height: 20,),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             const LinearProgressIndicator(
 
-              // color: Color(0xFFCC0066),
-              //  backgroundColor: Color(0xFF383B49),
+                // color: Color(0xFFCC0066),
+                //  backgroundColor: Color(0xFF383B49),
+                ),
+            const SizedBox(
+              height: 20,
             ),
-            const SizedBox(height: 20,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -85,34 +103,42 @@ class _SplashScreenState extends State<SplashScreen> {
                     width: 100,
                     child: LinearProgressIndicator(
 
-                      // color: Color(0xFFCC0066),
-                      //  backgroundColor: Color(0xFF383B49),
-                    ),
+                        // color: Color(0xFFCC0066),
+                        //  backgroundColor: Color(0xFF383B49),
+                        ),
                   ),
                 ),
-                Image.asset('assets/appLogo.png',width: 150,height: 150,),
+                Image.asset(
+                  'assets/appLogo.png',
+                  width: 150,
+                  height: 150,
+                ),
                 const RotatedBox(
                   quarterTurns: 1,
                   child: SizedBox(
                     width: 100,
                     child: LinearProgressIndicator(
 
-                      // color: Color(0xFFCC0066),
-                      //  backgroundColor: Color(0xFF383B49),
-                    ),
+                        // color: Color(0xFFCC0066),
+                        //  backgroundColor: Color(0xFF383B49),
+                        ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             const RotatedBox(
               quarterTurns: 2,
               child: LinearProgressIndicator(
-                // color: Color(0xFFCC0066),
-                //  backgroundColor: Color(0xFF383B49),
-              ),
+                  // color: Color(0xFFCC0066),
+                  //  backgroundColor: Color(0xFF383B49),
+                  ),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: const [
@@ -122,9 +148,9 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: RotatedBox(
                       quarterTurns: 1,
                       child: LinearProgressIndicator(
-                        // color: Color(0xFFCC0066),
-                        // backgroundColor: Color(0xFF383B49),
-                      )),
+                          // color: Color(0xFFCC0066),
+                          // backgroundColor: Color(0xFF383B49),
+                          )),
                 ),
                 SizedBox(
                   height: 50,
@@ -132,9 +158,9 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: RotatedBox(
                       quarterTurns: 1,
                       child: LinearProgressIndicator(
-                        // color: Color(0xFFCC0066),
-                        // backgroundColor: Color(0xFF383B49),
-                      )),
+                          // color: Color(0xFFCC0066),
+                          // backgroundColor: Color(0xFF383B49),
+                          )),
                 ),
                 SizedBox(
                   height: 50,
@@ -142,15 +168,16 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: RotatedBox(
                       quarterTurns: 1,
                       child: LinearProgressIndicator(
-                        // color: Color(0xFFCC0066),
-                        // backgroundColor: Color(0xFF383B49),
-                      )),
+                          // color: Color(0xFFCC0066),
+                          // backgroundColor: Color(0xFF383B49),
+                          )),
                 ),
-              ],),
-            const SizedBox(height: 20,),
-            const LinearProgressIndicator(
-
+              ],
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            const LinearProgressIndicator(),
           ],
         ),
       ),

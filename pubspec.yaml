@@ -49,6 +49,7 @@ dependencies:
   flutter_launcher_icons: ^0.9.2
   flutter_file_meta_data: ^0.0.1
   media_metadata_retriever: ^0.0.1+4
+  permission_handler: ^8.3.0
 
 
 dev_dependencies:
