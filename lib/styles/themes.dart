@@ -8,7 +8,7 @@ ThemeData pinkAndDarkGrayTheme = ThemeData(
       color: Colors.white,
       fontSize: 18,
       fontWeight: FontWeight.bold,
-       overflow: TextOverflow.fade,
+
     ),
   ),
     indicatorColor:  Color(0xFFCC0066),
@@ -31,7 +31,7 @@ ThemeData blueAndDarkGrayTheme = ThemeData(
       color: Colors.white,
       fontSize: 18,
       fontWeight: FontWeight.bold,
-       overflow: TextOverflow.fade,
+       // overflow: TextOverflow.fade,
     ),
   ),
 
@@ -61,7 +61,7 @@ ThemeData redAndPinkTheme = ThemeData(
       color: Colors.white,
       fontSize: 18,
       fontWeight: FontWeight.bold,
-       overflow: TextOverflow.fade,
+       // overflow: TextOverflow.fade,
     ),
   ),
 
@@ -86,7 +86,7 @@ ThemeData beigeAndTealTheme = ThemeData(
       color: Colors.white,
       fontSize: 18,
       fontWeight: FontWeight.bold,
-       overflow: TextOverflow.fade,
+       // overflow: TextOverflow.fade,
     ),
   ),
 
@@ -102,3 +102,28 @@ colorScheme: const ColorScheme.light(
 )
 
 );
+ThemeData pinkAndBlueTheme = ThemeData(
+  scaffoldBackgroundColor: const Color(0xFF2c3531),
+  cardColor: const Color(0xFF0d1137),
+  textTheme: const TextTheme(
+    bodyText1: TextStyle(
+      color: Colors.white,
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+       // overflow: TextOverflow.fade,
+    ),
+  ),
+
+  indicatorColor:  const Color(0xFFEDF5E1),
+
+  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    selectedItemColor: Color(0xFFEDF5E1),
+    unselectedItemColor: Colors.white38,
+  ),
+colorScheme: const ColorScheme.light(
+  primary: Color(0xFF0d1137),
+  secondary: Color(0xFFe52165),
+)
+
+);
+

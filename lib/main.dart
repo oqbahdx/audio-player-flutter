@@ -8,12 +8,12 @@ import 'package:audioplayer/screens/player_page.dart';
 import 'package:audioplayer/screens/splash.dart';
 import 'package:audioplayer/screens/app_bar/tracks.dart';
 import 'package:audioplayer/screens/themes.dart';
-import 'package:audioplayer/storage/shared_pref.dart';
+
 import 'package:audioplayer/styles/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-Future<ThemeData> main() async{
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
    // ThemeData appTheme;
    // var theme = SharedPref.getData(key: 'BB');
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
 
         debugShowCheckedModeBanner: false,
         initialRoute: SplashScreen.id,
-        theme: beigeAndTealTheme,
+        theme: redAndPinkTheme,
         routes: {
           SplashScreen.id: (_) => const SplashScreen(),
           HomePage.id: (_) => const HomePage(),

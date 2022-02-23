@@ -5,14 +5,17 @@ import 'package:audioplayer/models/file_model.dart';
 
 import 'package:flutter/foundation.dart';
 import 'dart:ui' as ui;
-import '/bloc/states.dart';
-import '/screens/all_audios.dart';
-import '/screens/favorites.dart';
-import '/screens/home.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:id3/id3.dart';
+import 'package:just_audio/just_audio.dart' as just;
+
+import '../screens/all_audios.dart';
+import '../screens/favorites.dart';
+import '../screens/home.dart';
+import 'states.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitialState());
@@ -182,5 +185,14 @@ class AppCubit extends Cubit<AppStates> {
     if (kDebugMode) {
       print(metadata.albumArtistName);
     }
+  }
+  int timeProgress = 0;
+  timerProgressToDuration(Duration duration){
+    timeProgress = duration.inMilliseconds;
+    emit(TimeToDurationState());
+  }
+  getFile()async{
+    final player = just.AudioPlayer();
+    var duration = await player.setFilePath('/path/to/file.mp3');
   }
 }

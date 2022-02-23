@@ -17,18 +17,18 @@ Widget appBarIcon() {
       ),
       Padding(
         padding: const EdgeInsets.only(left: 5.0),
-        child: DrowerBuild(),
+        child: DrawerBuild(),
       ),
       const SizedBox(
         height: 5,
       ),
-      DrowerBuild(width: 45),
+      DrawerBuild(width: 45),
       const SizedBox(
         height: 5,
       ),
       Padding(
         padding: const EdgeInsets.only(left: 5.0),
-        child: DrowerBuild(),
+        child: DrawerBuild(),
       )
     ],
   );
@@ -49,10 +49,10 @@ Widget buildContainer({double width = 25}) {
   );
 }
 
-class DrowerBuild extends StatelessWidget {
-  double width;
+class DrawerBuild extends StatelessWidget {
+ final double width;
 
-  DrowerBuild({Key key, this.width = 25}) : super(key: key);
+  DrawerBuild({Key key, this.width = 25}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -189,8 +189,8 @@ Widget drawerCard({String name, Function onTap, BuildContext context}) {
 }
 
 class drawerCardBuild extends StatefulWidget {
-  Function onTap;
-  String name;
+ final Function onTap;
+ final String name;
 
   drawerCardBuild({Key key, this.onTap, this.name}) : super(key: key);
 
@@ -238,9 +238,9 @@ class _drawerCardBuildState extends State<drawerCardBuild> {
 }
 
 class DrawerCardTrackBuild extends StatelessWidget {
-  String name;
-  Function onTap;
-  Function longTap;
+ final String name;
+ final Function onTap;
+ final Function longTap;
 
   DrawerCardTrackBuild({Key key, this.name, this.onTap, this.longTap})
       : super(key: key);
@@ -306,7 +306,7 @@ Widget drawerCardTrack({String name, Function onTap, Function longTap}) {
             fontSize: 18,
             fontWeight: FontWeight.bold,
             // color: Theme.of(context).textTheme.bodyText1,
-            overflow: TextOverflow.ellipsis,
+            // overflow: TextOverflow.ellipsis,
           ),
         )),
         decoration: BoxDecoration(

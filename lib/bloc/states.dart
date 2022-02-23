@@ -10,3 +10,4 @@ class RemoveFromFavoritesState extends AppStates {}
 
 class GetFileImageState extends AppStates {}
 class GetFileInfoState extends AppStates {}
+class TimeToDurationState extends AppStates {}

@@ -41,8 +41,8 @@ Widget homeContainer({Function onTap, List<String>images}) {
 }
 class AudioListBuild extends StatelessWidget {
 
-  String audioName;
-  Function onTap;
+final  String audioName;
+final  Function onTap;
    AudioListBuild({Key key,this.audioName,this.onTap}) : super(key: key);
 
   @override

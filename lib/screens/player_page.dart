@@ -42,10 +42,10 @@ class _PlayerPageState extends State<PlayerPage>
         .floor() % 60}';
     return '$minutes:$seconds';
   }
-
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+
+    super.didChangeDependencies();
     _controller =
     AnimationController(vsync: this, duration: const Duration(seconds: 2))
       ..repeat();
@@ -167,7 +167,7 @@ class _PlayerPageState extends State<PlayerPage>
                       fontSize: 25,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      overflow: TextOverflow.clip),
+                        ),
                   maxLines: 1,
                 ),
               ),
@@ -204,9 +204,10 @@ class _PlayerPageState extends State<PlayerPage>
                         },
                         min: 0,
                         max: (audioDuration / 1000).floorToDouble(),
-                        thumbColor :cubit.playerState == PlayerState.PLAYING?Colors.blue:Colors.red
+                        activeColor :cubit.playerState == PlayerState.PLAYING?Colors.blue:Colors.red
                        ,
                       ),
+
                     ),
                   ),
                   Text(

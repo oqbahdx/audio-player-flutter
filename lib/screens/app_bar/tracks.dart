@@ -1,10 +1,12 @@
-import '/bloc/cubit.dart';
-import '/bloc/states.dart';
-import '/components/navigator.dart';
-import '/screens/player_page.dart';
-import '/widgets/app_bar.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../bloc/cubit.dart';
+import '../../bloc/states.dart';
+import '../../components/navigator.dart';
+import '../../widgets/app_bar.dart';
+import '../player_page.dart';
 
 class TracksPage extends StatefulWidget {
   const TracksPage({Key key}) : super(key: key);

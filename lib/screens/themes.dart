@@ -15,7 +15,8 @@ class _ThemesPageState extends State<ThemesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
+        elevation: 0.0,
+backgroundColor: Colors.transparent,
       ),
       body:  GridView(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

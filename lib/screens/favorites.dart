@@ -1,9 +1,9 @@
 import 'package:audioplayer/bloc/cubit.dart';
 import 'package:audioplayer/bloc/states.dart';
-import 'package:audioplayer/storage/shared_pref.dart';
+
 import 'package:audioplayer/styles/styles.dart';
 import 'package:audioplayer/widgets/app_bar.dart';
-import 'package:audioplayer/widgets/favorite.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
