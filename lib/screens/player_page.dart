@@ -203,7 +203,7 @@ class _PlayerPageState extends State<PlayerPage>
                           seekToSec(value.toInt());
                         },
                         min: 0,
-                        max: (audioDuration / 1000).floorToDouble(),
+                        max: (audioDuration / 1000).floorToDouble() + 1.0,
                         activeColor :cubit.playerState == PlayerState.PLAYING?Colors.blue:Colors.red
                        ,
                       ),

@@ -16,7 +16,7 @@ import '../screens/all_audios.dart';
 import '../screens/favorites.dart';
 import '../screens/home.dart';
 import 'states.dart';
-
+import 'package:permission_handler/permission_handler.dart';
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitialState());
 
@@ -37,22 +37,28 @@ class AppCubit extends Cubit<AppStates> {
   List<FileSystemEntity> files;
   List<FileSystemEntity> songs = [];
 
-  getAllAudios() {
-    Directory dir = Directory('/storage/emulated/0/');
-    String mp3Path = dir.toString();
-    if (kDebugMode) {
-      print(mp3Path);
+  getAllAudios() async {
+    var status = await Permission.storage.status;
+    if (!status.isGranted) {
+      await Permission.storage.request();
+    }else{
+      Directory dir = Directory('/storage/emulated/0/');
+      String mp3Path = dir.path.toString();
+      if (kDebugMode) {
+        print(mp3Path);
+      }
+
+      files = dir.listSync(recursive: true, followLinks: false);
+      for (FileSystemEntity entity in files) {
+        String path = entity.path;
+        if (path.endsWith('.mp3')) songs.add(entity);
+      }
+      if (kDebugMode) {
+        print(songs);
+        print(songs.length);
+      }
     }
 
-    files = dir.listSync(recursive: true, followLinks: false);
-    for (FileSystemEntity entity in files) {
-      String path = entity.path;
-      if (path.endsWith('.mp3')) songs.add(entity);
-    }
-    if (kDebugMode) {
-      print(songs);
-      print(songs.length);
-    }
   }
 
   Map<String, dynamic> getFileInfo({String fileName}) {
