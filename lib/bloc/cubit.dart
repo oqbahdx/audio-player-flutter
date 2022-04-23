@@ -54,33 +54,30 @@ class AppCubit extends Cubit<AppStates> {
         if (path.endsWith('.mp3')) songs.add(entity);
       }
       if (kDebugMode) {
-        print(songs);
+        print(songs[0].absolute);
         print(songs.length);
       }
     }
 
   }
 
-  Map<String, dynamic> getFileInfo({String fileName}) {
-    List<int> mp3Bytes = File(fileName).readAsBytesSync();
-    MP3Instance mp3instance = MP3Instance(mp3Bytes);
-    if (mp3instance.parseTagsSync()) {
-      if (kDebugMode) {
-        print(mp3instance.getMetaTags());
-      }
-    }
-    return {
-      "Title": "SongName",
-      "Artist": "ArtistName",
-      "Album": "AlbumName",
-      "APIC": {
-        "mime": "image/jpeg",
-        "textEncoding": "0",
-        "picType": "0",
-        "description": "description",
-        "base64": "AP/Y/+AAEEpGSUYAAQEBAE..."
-      }
-    };
+  Future<Map<String, dynamic>> getFileInfo({String fileName}) async{
+    final metadata = await MetadataRetriever.fromFile(File(fileName));
+    String trackName = metadata.trackName;
+    List<String> trackArtistNames = metadata.trackArtistNames;
+    String albumName = metadata.albumName;
+    String albumArtistName = metadata.albumArtistName;
+    int trackNumber = metadata.trackNumber;
+    int albumLength = metadata.albumLength;
+    int year = metadata.year;
+    String genre = metadata.genre;
+    String authorName = metadata.authorName;
+    String writerName = metadata.writerName;
+    int discNumber = metadata.discNumber;
+    String mimeType = metadata.mimeType;
+    int trackDuration = metadata.trackDuration;
+    int bitrate = metadata.bitrate;
+    Uint8List albumArt = metadata.albumArt;
   }
 
   List<String> maroon5 = [

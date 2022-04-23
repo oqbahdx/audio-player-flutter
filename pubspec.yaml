@@ -52,6 +52,7 @@ dependencies:
   permission_handler: ^9.2.0
   permission_handler_platform_interface: ^3.7.0
   just_audio: ^0.9.20
+  flutter_native_splash: ^2.1.6
 
 
 dev_dependencies:
