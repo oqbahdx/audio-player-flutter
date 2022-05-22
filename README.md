@@ -1,6 +1,6 @@
 # audioplayer
 
-A new Flutter project.
+An application for an audio player deals directly with the device files and can controller  of the audio file (under development)
 
 ## Getting Started
 
